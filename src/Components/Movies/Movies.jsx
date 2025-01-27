@@ -33,7 +33,7 @@ const Movies = () => {
         <h1 className='text-center text-2xl p-5 font-bold'>Trending Movies</h1>
       </div>
 
-      <div className="flex p-2 flex-wrap justify-evenly space-y-10 space-x-8">
+      <div className="flex flex-wrap justify-evenly space-y-10 ">
         {movies.map((movieObj)=>{
           return <MovieCard key={movieObj.id} movieObj={movieObj}/>
         })
