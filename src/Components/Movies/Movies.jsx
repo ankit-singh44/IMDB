@@ -27,6 +27,25 @@ const Movies = () => {
     setLoading(true);
     setPageNo(pageNo+1);
   }
+  
+
+// Action to perfom add to watchList
+  const addToWatchList=(movieObj)=>{
+    const updatedWatchList=[...watchList,movieObj];
+    setWatchList(updatedWatchList);
+    localStorage.setItem("watchList",JSON.stringify(updatedWatchList));
+  }
+
+
+  // Action to remove from WachList
+
+  const removeFromWatchList=(movieObj)=>{
+    const updatedWatchList=watchList.filter((movie)=>{
+      return movie.id!=movieObj.id;
+    })
+    setWatchList(updatedWatchList);
+    localStorage.setItem("watchList",JSON.stringify(updatedWatchList));
+  }
 
 
   // useEffect fo fetching data from API and use that data to store and setMovies with updated value
@@ -41,7 +60,7 @@ const Movies = () => {
       }
       setWatchList(watchListData);
       setMovies(movies)
-      setLoading(false);
+      setLoading(false)
     })
   }, [pageNo]);
 
@@ -58,7 +77,10 @@ const Movies = () => {
 
       <div className="flex flex-wrap justify-evenly">
         {movies.map((movieObj)=>{
-          return <MovieCard watchList={watchList} key={movieObj.id} movieObj={movieObj}/>
+          return <MovieCard watchList={watchList} 
+          addToWatchList={addToWatchList}
+          removeFromWatchList={removeFromWatchList}
+          key={movieObj.id} movieObj={movieObj}/>
         })
         }
       </div>

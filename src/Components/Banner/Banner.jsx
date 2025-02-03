@@ -14,7 +14,8 @@ const Banner = () => {
   // make API call to fetch data from api and use it as Movie Banner
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=fdfa545a5bd09648cfa3a73362b23a3a`).then(function(response){
+    axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=fdfa545a5bd09648cfa3a73362b23a3a`)
+    .then(function(response){
 
       // console.log(response); 
       
